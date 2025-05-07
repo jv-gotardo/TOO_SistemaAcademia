@@ -13,15 +13,17 @@ import java.time.format.DateTimeFormatter;
  * @author vanessalagomachado
  */
 public class AvaliacaoFisica {
-    private Pessoa aluno;
+    private Aluno aluno;
     private LocalDate data;
     private double peso;
     private double altura;
     private double idade;
     private double imc;
+    private Professor professor;
+    
     DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     
-    public AvaliacaoFisica(Pessoa aluno){
+    public AvaliacaoFisica(Aluno aluno){
         this.aluno = aluno;
         data = LocalDate.now();
     }
@@ -94,12 +96,22 @@ public class AvaliacaoFisica {
         if(imc > 0){
             aux += "\nIMC: " + imc;
         }
+        if(professor!=null)
+            aux += "\nProfessor: "+professor;
         return aux;
     }
 
     @Override
     public String toString() {
         return formato.format(data) +" - IMC: "+ imc;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
     }
     
     

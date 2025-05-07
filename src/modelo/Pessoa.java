@@ -19,7 +19,7 @@ public class Pessoa {
     private LocalDate dataNascimento;
     private String nome;
     private String CPF;
-    private List<AvaliacaoFisica> avaliacoes = new ArrayList<>();
+    
 
     //construtores
     Pessoa(String n) {
@@ -47,7 +47,7 @@ public class Pessoa {
         if (dataNascimento != null) {
             aux += "Data de Nascimento: " + formato.format(dataNascimento);
         }
-        aux += "\nAvaliações Físicas Realizadas: " + avaliacoes.size() + "\n";
+        
         return aux;
     }
 
@@ -85,16 +85,6 @@ public class Pessoa {
         return nome;
     }
     
-    public void adicionarAvaliacao(AvaliacaoFisica avaliacao) {
-        avaliacoes.add(avaliacao);
-    }
     
-    public String mostrarAvaliacoes(){
-        String aux = "Histórico de Avaliações: \n";
-        for(AvaliacaoFisica cadaAvaliacao: avaliacoes){
-            aux += "->> "+ cadaAvaliacao+"\n";
-        }
-        return aux;
-    }
     
 }
