@@ -3,7 +3,9 @@ package teste;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import modelo.Aluno;
+import modelo.AlunoConvenio;
 import modelo.AvaliacaoFisica;
+import modelo.Convenio;
 import modelo.Plano;
 import modelo.Professor;
 
@@ -16,8 +18,9 @@ public class TesteHeranca {
         
         //System.out.println(p.exibirDados());
         Plano plano = new Plano("Básico", "Direito a 4 horas por semana de academia", 295.00);
+        Plano plano2 = new Plano("VIP", "Direito a 20 horas por semana de academia", 450.00);
         
-        ///Aluno com direito ao desconto
+        ///Aluno sem convênio 
         Aluno a1 = new Aluno();
         a1.setNome("Vivente");
         a1.setMatricula("123");
@@ -37,7 +40,26 @@ public class TesteHeranca {
         System.out.println(a1.exibirDados());
         System.out.println("--------------");
         
-        //Aluno sem direito ao desconto
+        ///Aluno com convênio
+        Convenio convenio = new Convenio("IFSUL", "Convênio dos alunos do IFSUL", 0.05);
+        AlunoConvenio ac = new AlunoConvenio(convenio, LocalDate.parse("20/10/2024",
+                formato));
+        ac.setNome("Senhor");
+        ac.setMatricula("055");
+        ac.setDataNascimento(LocalDate.parse("15/04/2000",
+                formato));
+        ac.setPlano(plano2);
+        
+        AvaliacaoFisica av2 = new AvaliacaoFisica(ac);
+        ac.adicionarAvaliacao(av2);
+        
+        System.out.println(ac.exibirDados());
+        System.out.println("--------------");
+    }
+}
+
+/*
+  //Aluno sem direito ao desconto
         Aluno a2 = new Aluno();
         a2.setNome("Indivíduo");
         a2.setMatricula("254");
@@ -53,5 +75,5 @@ public class TesteHeranca {
         av2.setProfessor(p);
         
         System.out.println(a2.exibirDados());
-    }
-}
+
+*/
